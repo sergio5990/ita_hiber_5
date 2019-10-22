@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class ManyToManyTest {
 
@@ -35,12 +36,16 @@ public class ManyToManyTest {
 
         EntityManager em = EMUtil.getEntityManager();
         em.getTransaction().begin();
-        em.persist(meeting1);
-        em.persist(meeting2);
+        em.persist(employee1);
+        em.persist(employee2);
         em.getTransaction().commit();
-        em.clear();
-        Meeting meeting = em.find(Meeting.class, 1L);
-        meeting.getEmployees().size();
+        em.close();
+
+        em = EMUtil.getEntityManager();
+        em.getTransaction().begin();
+        employee1 = em.find(Employee.class, employee1.getEmployeeId());
+        employee1.getMeetings().remove(1);
+        em.getTransaction().commit();
 
     }
 
