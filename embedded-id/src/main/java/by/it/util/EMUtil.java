@@ -12,6 +12,7 @@ public class EMUtil {
         return emFactory.createEntityManager();
     }
 
+
     public static void closeEMFactory() {
         emFactory.close();
     }

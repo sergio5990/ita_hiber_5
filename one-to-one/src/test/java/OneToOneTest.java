@@ -12,8 +12,11 @@ public class OneToOneTest {
     @Test
     public void saveTest() {
         Employee employee = new Employee(null, "Yulij", "Slabko", null, null);
+
         EmployeeDetail employeeDetail = new EmployeeDetail(null, "Sadovaya", "Minsk", "",
-                "Belarus", employee);
+                "Belarus", null);
+
+        employeeDetail.setEmployee(employee);
         employee.setEmployeeDetail(employeeDetail);
 
         EntityManager em = EMUtil.getEntityManager();
@@ -30,8 +33,9 @@ public class OneToOneTest {
     @Test
     public void mergeCascadeTest() {
         Employee employee = new Employee(null, "Yulij", "Slabko", null, null);
-        EmployeeDetail employeeDetail = new EmployeeDetail(null, "Sadovaya", "Minsk", "", "Belarus", employee);
+        EmployeeDetail employeeDetail = new EmployeeDetail(null, "Sadovaya", "Minsk", "", "Belarus", null);
         employee.setEmployeeDetail(employeeDetail);
+        employeeDetail.setEmployee(employee);
 
         EntityManager em = EMUtil.getEntityManager();
         em.getTransaction().begin();
@@ -40,10 +44,11 @@ public class OneToOneTest {
 
         em.clear();
 
+        em.getTransaction().begin();
+
         Employee employeeFromDb = em.find(Employee.class, 1L);
 
         employeeFromDb.getEmployeeDetail().setCity("Kiev");
-        em.getTransaction().begin();
         em.merge(employeeFromDb);
         em.getTransaction().commit();
 

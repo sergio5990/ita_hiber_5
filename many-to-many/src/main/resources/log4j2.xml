@@ -24,5 +24,8 @@
     <Logger name="com.boraji.tutorial.hibernate" level="debug" additivity="false">
       <AppenderRef ref="Console" />
     </Logger>
+    <Logger name="com.mysql" level="TRACE" additivity="false">
+      <AppenderRef ref="Console" />
+    </Logger>
   </Loggers>
 </Configuration>

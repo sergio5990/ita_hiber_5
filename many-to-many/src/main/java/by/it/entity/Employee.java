@@ -34,8 +34,7 @@ public class Employee {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "EMPLOYEE_MEETING", joinColumns = {@JoinColumn(name = "EMPLOYEE_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "MEETING_ID")}
-    )
+            inverseJoinColumns = {@JoinColumn(name = "MEETING_ID")})
     private List<Meeting> meetings = new ArrayList<>();
 
 

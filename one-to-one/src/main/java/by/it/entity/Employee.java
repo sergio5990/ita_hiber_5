@@ -30,7 +30,7 @@ public class Employee {
     private LocalDateTime date;
 
     @OneToOne(mappedBy = "employee", fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private EmployeeDetail employeeDetail;
 
     public Employee(Long employeeId, String firstName, String lastName, LocalDateTime date, EmployeeDetail employeeDetail) {

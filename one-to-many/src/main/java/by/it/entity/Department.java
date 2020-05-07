@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 
@@ -24,6 +25,7 @@ public class Department {
     private String departmentName;
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Fetch(FetchMode.SUBSELECT)
 //    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
     private List<Employee> employees = new ArrayList<>();
 

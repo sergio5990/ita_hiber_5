@@ -1,5 +1,8 @@
 package by.it.util;
 
+import by.it.entity.Employee;
+import by.it.entity.EmployeeDetail;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

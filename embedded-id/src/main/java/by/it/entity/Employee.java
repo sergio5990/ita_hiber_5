@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class Employee {
 
     @EmbeddedId
+    @AttributeOverride(name = "firstName", column = @Column(name ="my_firstName"))
     private EmployeeId id;
 
     private LocalDateTime date;

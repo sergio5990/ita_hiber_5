@@ -26,11 +26,13 @@ public class OneToManyTest {
         em = EMUtil.getEntityManager();
         em.getTransaction().begin();
         department = em.find(Department.class, department.getDepartmentId());
-
+        department.getEmployees();
         Employee forDelete = department.getEmployees().iterator().next();
 
         department.getEmployees().remove(forDelete);
-//        forDelete.setDepartment(null);
+        forDelete.setDepartment(null);
+
+        em.persist(department);
         em.getTransaction().commit();
     }
 

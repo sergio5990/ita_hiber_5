@@ -38,13 +38,15 @@ public class EmployeeDetail {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
+    @Column(name = "employee_id", updatable = false, insertable = false)
+    private Long employeeId;
+
     public EmployeeDetail(Long id, String street, String city, String state, String country, Employee employee) {
         this.id = id;
         this.street = street;
         this.city = city;
         this.state = state;
         this.country = country;
-        this.employee = employee;
     }
 
     public EmployeeDetail() {
@@ -88,6 +90,10 @@ public class EmployeeDetail {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
     public Employee getEmployee() {
